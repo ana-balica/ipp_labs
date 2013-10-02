@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ page_title }}</title>
+</head>
+<body>
+    <h2>{{ page_title }}</h2>
+
+    <form method="post" action="{{ url_for('no_proxy') }}">
+        {# http://mirror.yandex.ru/ubuntu-cdimage/releases/13.10/beta-1/source/ubuntu-13.10-beta1-src-1.iso#}
+        <p><input type="submit" name="ubuntu_13_10" value="Download Ubuntu 13.10 beta"/></p>
+        {# http://mirror.yandex.ru/ubuntu-cdimage/releases/13.04/release/ubuntu-13.04-desktop-armhf+omap4.img #}
+        <p><input type="submit" name="ubuntu_13_04" value="Download Ubuntu 13.04"/></p>
+        {# http://archlinux.mirror.dkm.cz/pub/archlinux/iso/2013.10.01/archlinux-2013.10.01-dual.iso #}
+        <p><input type="submit" name="archlinux_2013_10_01" value="Download ArchLinux 2013.10.01"/></p>
+
+    </form>
+</body>
+</html>
