@@ -1,12 +1,14 @@
+import urllib
+from urlparse import urljoin
 from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
-books = {"head_first_javascript": "http://filepi.com/i/67jRlIk",
-		 "head_first_ajax": "http://filepi.com/i/mqjSTFf",
-		 "head_first_mobile_web": "http://filepi.com/i/deiTISD",
-		 "head_first_python": "http://it-ebooks.info/go.php?id=373-1392673408-99416e0f6a7e26889228df535550c3c5",
-		 "head_first_programming": "http://it-ebooks.info/go.php?id=372-1392673452-f82251d58ced6458b12a2f92e0d6d3f8"}
+books = {"head_first_web_design": "http://it-ebooks.info/go.php?id=378-1392675790-f597a7940b48b95cb72f848efad42016",
+         "head_first_design_patterns": "http://it-ebooks.info/go.php?id=252-1392675832-83f522728f81e90f89ed476ff9c95e55",
+         "head_first_data_analysis": "http://it-ebooks.info/go.php?id=250-1392675874-42981d0d415bf9387170465f29d5116c",
+         "head_first_rails": "http://it-ebooks.info/go.php?id=374-1392678356-5810778fb9f821ec03ace650664cd30d",
+         "head_first_wordpress": "http://it-ebooks.info/go.php?id=379-1392678394-f9ed6d1e4fdefb737c271a08b7310af7"}
 
 
 @app.route('/')
@@ -17,7 +19,9 @@ def main():
 @app.route('/no-proxy/', methods=['GET', 'POST'])
 def no_proxy():
     if request.method == 'POST':
-        print request.form
+        title = request.form["book"]
+        filepath = urljoin("downloads/", title + '.pdf')
+        urllib.urlretrieve(books[title], filepath)
     return render_template('proxy.html', page_title="No proxy")
 
 
