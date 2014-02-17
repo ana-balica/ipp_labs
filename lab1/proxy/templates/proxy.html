@@ -7,11 +7,18 @@
     <h2>{{ page_title }}</h2>
 
     <form method="post" action="{{ url_for('no_proxy') }}">
-        <button type="submit" name="book" value="head_first_web_design">Download Head First Web Design</button><br>
-        <button type="submit" name="book" value="head_first_design_patterns">Download Head First Design Patterns</button><br>
-        <button type="submit" name="book" value="head_first_data_analysis">Download Head First Data Analysis</button><br>
-        <button type="submit" name="book" value="head_first_rails">Download Head First Rails</button><br>
-        <button type="submit" name="book" value="head_first_wordpress">Download Head First Wordpress</button>
+        <button type="submit" name="book" value="WGS.115">Gender and Technology</button><br>
+        <button type="submit" name="book" value="6.046J">Design and Analysis of Algorithms</button><br>
+        <button type="submit" name="book" value="ES.S60">The Art and Science of Happiness</button><br>
+        <button type="submit" name="book" value="18.353J">Nonlinear Dynamics I: Chaos</button><br>
+        <button type="submit" name="book" value="24.118">Paradox & Infinity</button>
     </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 </body>
 </html>
