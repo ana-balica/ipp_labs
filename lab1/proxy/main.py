@@ -1,6 +1,8 @@
-import urllib
+import time
 from urlparse import urljoin
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, session
+
+from download import Downloader, ProxyDownloader
 
 
 app = Flask(__name__)
@@ -20,16 +22,33 @@ def main():
 @app.route('/no-proxy/', methods=['GET', 'POST'])
 def no_proxy():
     if request.method == 'POST':
-        title = request.form["book"]
-        filepath = urljoin("downloads/", title + '.zip')
-        urllib.urlretrieve(books[title], filepath)
-        flash('Successfully downloaded {0}'.format(title))
-    return render_template('proxy.html', page_title="No proxy")
+        title = request.form["ocw"]
+        long_title = media[title].split('/')[-1]
+        filepath = urljoin("downloads/", long_title)
+        downloader = Downloader()
+        downloader.get(media[title], filepath)
+        flash('Successfully downloaded {0}'.format(long_title))
+    return render_template('proxy.html', page_title="No proxy", action="no_proxy")
 
 
-@app.route('/simple-proxy/')
+@app.route('/simple-proxy/', methods=['GET', 'POST'])
 def simple_proxy():
-    pass
+    if request.method == 'POST':
+        if 'request_count' not in session:
+            session['request_count'] = 1
+        else:
+            session['request_count'] += 1
+        title = request.form["ocw"]
+        long_title = media[title].split('/')[-1]
+        filepath = urljoin("downloads/", long_title)
+        downloader = Downloader()
+        proxy = ProxyDownloader(downloader, session['request_count'])
+        download_data = proxy.get(media[title], filepath)
+        if download_data:
+            session['request_count'] = 0
+            for data in download_data:
+                flash('Successfully downloaded {0}'.format(data[1].split('/')[-1]))
+    return render_template('proxy.html', page_title="Simple proxy", action="simple_proxy")    
 
 
 @app.route('/caching-proxy/')
