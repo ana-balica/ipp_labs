@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, flash
 
 app = Flask(__name__)
 app.secret_key = 'some_secret_key_whatever'
-books = {"WGS.115": "http://ocw.mit.edu/ans15436/ZipForEndUsers/WGS/wgs-115-spring-2013/wgs-115-spring-2013.zip",
+media = {"WGS.115": "http://ocw.mit.edu/ans15436/ZipForEndUsers/WGS/wgs-115-spring-2013/wgs-115-spring-2013.zip",
          "6.046J": "http://ocw.mit.edu/ans15436/ZipForEndUsers/6/6-046j-spring-2012/6-046j-spring-2012.zip",
          "ES.S60": "http://ocw.mit.edu/ans15436/ZipForEndUsers/ES/es-s60-spring-2013/es-s60-spring-2013.zip",
          "18.353J": "http://ocw.mit.edu/ans15436/ZipForEndUsers/18/18-353j-fall-2012/18-353j-fall-2012.zip",
