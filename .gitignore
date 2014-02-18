@@ -39,3 +39,6 @@ env
 
 # JetBrains projects
 .idea
+
+# Custom stuff
+lab1/proxy/downloads
