@@ -2,7 +2,7 @@ import time
 from urlparse import urljoin
 from flask import Flask, render_template, request, flash, session
 
-from download import Downloader, ProxyDownloader
+from download import Downloader, ProxyDownloader, CachingProxyDownloader
 
 
 app = Flask(__name__)
@@ -51,9 +51,24 @@ def simple_proxy():
     return render_template('proxy.html', page_title="Simple proxy", action="simple_proxy")    
 
 
-@app.route('/caching-proxy/')
+@app.route('/caching-proxy/', methods=['GET', 'POST'])
 def caching_proxy():
-    pass
+    if request.method == 'POST':
+        if 'request_count_caching' not in session:
+            session['request_count_caching'] = 1
+        else:
+            session['request_count_caching'] += 1
+        title = request.form["ocw"]
+        long_title = media[title].split('/')[-1]
+        filepath = urljoin("downloads/", long_title)
+        downloader = Downloader()
+        proxy = CachingProxyDownloader(downloader, session['request_count_caching'])
+        download_data = proxy.get(media[title], filepath)
+        if download_data:
+            session['request_count_caching'] = 0
+            for data in download_data:
+                flash('Successfully downloaded {0}'.format(data[1].split('/')[-1]))
+    return render_template('proxy.html', page_title="Caching proxy", action="caching_proxy")
 
 
 if __name__ == "__main__":
