@@ -35,7 +35,7 @@ var Scoreboard = {
     }
 };
 
-
+// http://bumbu.ru/javascript-observer-publish-subscribe-pattern/
 var Observable = {
     observers: [], 
 
