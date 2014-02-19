@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="title">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>801</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>24</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Pizza Adriano</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="name_input">
+    <property name="geometry">
+     <rect>
+      <x>274</x>
+      <y>51</y>
+      <width>261</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="maxLength">
+     <number>32773</number>
+    </property>
+    <property name="placeholderText">
+     <string>Please enter your name</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="ingredients_label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>791</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Choose pizza ingredients</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="order_btn">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>674</x>
+      <y>546</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Order</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>440</y>
+      <width>491</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Your pizza contains:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>520</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Price: 00 lei</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>140</y>
+      <width>781</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <property name="leftMargin">
+      <number>150</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="cheese_label">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Cheese</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="meat_label">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Meat</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="vegetables_label">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Vegetables</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>190</y>
+      <width>112</width>
+      <height>126</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QCheckBox" name="ch_bacon">
+       <property name="text">
+        <string>Bacon</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_prosciutto">
+       <property name="text">
+        <string>Prosciutto</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_salami">
+       <property name="text">
+        <string>Salami</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_chicken_breast">
+       <property name="text">
+        <string>Chicken Breast</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_ham">
+       <property name="text">
+        <string>Ham</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>190</y>
+      <width>149</width>
+      <height>256</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QCheckBox" name="ch_fresh_mushrooms">
+       <property name="text">
+        <string>Fresh mushrooms</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_smoked_mushrooms">
+       <property name="text">
+        <string>Smoked mushrooms</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_red_onion">
+       <property name="text">
+        <string>Red onion</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_tomatoes">
+       <property name="text">
+        <string>Tomatoes</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_garlic">
+       <property name="text">
+        <string>Garlic</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_rucola">
+       <property name="text">
+        <string>Rucola</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_marinated_gogoshars">
+       <property name="text">
+        <string>Marinated Gogoshars</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_corn">
+       <property name="text">
+        <string>Corn</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_parsley">
+       <property name="text">
+        <string>Parsley</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_chili_pepper">
+       <property name="text">
+        <string>Chili pepper</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>190</y>
+      <width>87</width>
+      <height>152</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QCheckBox" name="ch_feta">
+       <property name="text">
+        <string>Feta</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_parmesan">
+       <property name="text">
+        <string>Parmesan</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_mozarella">
+       <property name="text">
+        <string>Mozarella</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_dor_blue">
+       <property name="text">
+        <string>Dor Blue</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_edam">
+       <property name="text">
+        <string>Edam</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="ch_branza">
+       <property name="text">
+        <string>Branza</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <zorder>gridLayoutWidget</zorder>
+   <zorder>title</zorder>
+   <zorder>name_input</zorder>
+   <zorder>ingredients_label</zorder>
+   <zorder>cheese_label</zorder>
+   <zorder>meat_label</zorder>
+   <zorder>vegetables_label</zorder>
+   <zorder>ch_feta</zorder>
+   <zorder>ch_mozarella</zorder>
+   <zorder>ch_parmesan</zorder>
+   <zorder>ch_dor_blue</zorder>
+   <zorder>ch_branza</zorder>
+   <zorder>ch_edam</zorder>
+   <zorder>ch_prosciutto</zorder>
+   <zorder>ch_bacon</zorder>
+   <zorder>ch_chicken_breast</zorder>
+   <zorder>ch_ham</zorder>
+   <zorder>ch_salami</zorder>
+   <zorder>ch_smoked_mushrooms</zorder>
+   <zorder>ch_fresh_mushrooms</zorder>
+   <zorder>ch_rucola</zorder>
+   <zorder>ch_tomatoes</zorder>
+   <zorder>ch_garlic</zorder>
+   <zorder>ch_red_onion</zorder>
+   <zorder>ch_corn</zorder>
+   <zorder>ch_marinated_gogoshars</zorder>
+   <zorder>ch_chili_pepper</zorder>
+   <zorder>ch_parsley</zorder>
+   <zorder>order_btn</zorder>
+   <zorder>label_7</zorder>
+   <zorder>label_8</zorder>
+   <zorder>meat_label</zorder>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
