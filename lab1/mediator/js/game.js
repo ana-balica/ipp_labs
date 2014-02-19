@@ -86,7 +86,7 @@ $(document).ready(function () {
             window.onkeypress = null;
             $(button).removeAttr('disabled');
             Mediator.game_over();
-        }, 5000);
+        }, 30000);
     }) 
 });
 
