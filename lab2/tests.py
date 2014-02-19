@@ -1,3 +1,5 @@
+import pytest
+
 from main import CSV
 
 
@@ -7,5 +9,7 @@ class TestCSV(object):
 
     def test_load_ingredients(self):
         data = self.csv.load_ingredients()
-        assert data["bacon"] == 100
-        assert data["chili_pepper"] == 33
+        assert data["Bacon"] == 100
+        assert data["Chili pepper"] == 33
+        with pytest.raises(KeyError):
+            data["some_other_ingredient"]

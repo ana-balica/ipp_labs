@@ -27,8 +27,7 @@ class CSV(object):
         with open(self.filename, 'rb') as csvfile:
             f = csv.reader(csvfile, delimiter=',')
             for row in f:
-                ingredient = row[0].replace(' ', '_').lower()
-                data[ingredient] = int(row[1])
+                data[row[0]] = int(row[1])
         return data
 
 
