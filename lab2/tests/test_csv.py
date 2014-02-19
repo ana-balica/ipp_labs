@@ -1,6 +1,6 @@
 import pytest
 
-from main import CSV
+from lab2.main import CSV, ControlMainWindow
 
 
 class TestCSV(object):
