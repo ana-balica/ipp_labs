@@ -31,17 +31,32 @@ class CSV(object):
         return data
 
 
+class PriceCalculator(object):
+    """ Simple price calculator
+    """
+    def __init__(self, pricelist):
+        self.pricelist = pricelist
+
+    def compute_price(self, ingredients):
+        price = 0
+        for ingredient in ingredients:
+            if self.pricelist.get(ingredient):
+                price += self.pricelist[ingredient]
+        return price
+
+
 class ControlMainWindow(QtGui.QMainWindow):
-    def __init__(self, ingredients_data, parent=None):
+    def __init__(self, parent=None):
         super(ControlMainWindow, self).__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
 
+
 if __name__ == "__main__":
-    app = QtGui.QApplication(sys.argv)
     csv = CSV('pricelist.csv')
     ingredients = csv.load_ingredients()
-    pizza_app = ControlMainWindow(ingredients)
+    app = QtGui.QApplication(sys.argv)
+    pizza_app = ControlMainWindow()
     pizza_app.show()
     sys.exit(app.exec_())
