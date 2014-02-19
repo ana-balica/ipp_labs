@@ -1,5 +1,5 @@
 import sys
-import csv
+from csv import reader
 
 from PySide import QtGui
 from pizza_ui import Ui_MainWindow
@@ -25,14 +25,14 @@ class CSV(object):
         """
         data = {}
         with open(self.filename, 'rb') as csvfile:
-            f = csv.reader(csvfile, delimiter=',')
+            f = reader(csvfile, delimiter=',')
             for row in f:
                 data[row[0]] = int(row[1])
         return data
 
 
 class ControlMainWindow(QtGui.QMainWindow):
-    def __init__(self, parent=None):
+    def __init__(self, ingredients_data, parent=None):
         super(ControlMainWindow, self).__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -40,6 +40,8 @@ class ControlMainWindow(QtGui.QMainWindow):
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
-    pizza_app = ControlMainWindow()
+    csv = CSV('pricelist.csv')
+    ingredients = csv.load_ingredients()
+    pizza_app = ControlMainWindow(ingredients)
     pizza_app.show()
     sys.exit(app.exec_())
