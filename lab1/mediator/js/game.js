@@ -12,8 +12,27 @@ Player.prototype.play = function() {
 var Scoreboard = {
 
     update: function(score) {
-        c(score);
+        for (sc in score) {
+            $('#' + sc).text(score[sc]);
+        }
+    },
+
+    clear: function(players) {
+        for (var i = 0; i < players.length; i++) {
+            $('#' + players[i].name).text('0');
+        }
+    },
+
+    show_winner: function(players) {
+        var score = [];
+        for (var i = 0; i < players.length; i++) {
+            score.push([players[i].name ,$('#' + players[i].name).text()]);
+        }
+        score.sort(function(a, b) { return b[1] - a[1]; });
+        $('#winner').text('Last winner - ' + score[0][0]);
+        $('#winner').show();
     }
+
 };
 
 var Mediator = {
@@ -40,6 +59,11 @@ var Mediator = {
                 return;
             }
         }
+    },
+
+    game_over: function(e) {
+        Scoreboard.show_winner(Mediator.players);
+        Scoreboard.clear(Mediator.players);
     }
 };
 
@@ -50,17 +74,24 @@ $(document).ready(function () {
 
     Mediator.registerPlayer(player1);
     Mediator.registerPlayer(player2);
-    c(Mediator.players);
 
     window.onkeypress = Mediator.play;
+    $('#winner').hide();
 
-    setTimeout(function () {
-        window.onkeypress = null;
-        c('Game over!');
-    }, 30000);
+    $('button').on('click', function() {
+        var button = $(this);
+        $(button).attr('disabled','disabled');
+        window.onkeypress = Mediator.play;
+        setTimeout(function () {
+            window.onkeypress = null;
+            $(button).removeAttr('disabled');
+            Mediator.game_over();
+        }, 5000);
+    }) 
 });
 
 
+// helper function
 function c(msg) {
     console.log(msg);
 }
