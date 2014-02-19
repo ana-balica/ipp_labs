@@ -35,9 +35,18 @@ class PriceCalculator(object):
     """ Simple price calculator
     """
     def __init__(self, pricelist):
+        """ Initializer
+
+        @param pricelist: a dictionary of ingredient names and prices
+        """
         self.pricelist = pricelist
 
     def compute_price(self, ingredients):
+        """ Sum up the price for all ingredients
+
+        @param ingredients: list of ingredients
+        @return: int price
+        """
         price = 0
         for ingredient in ingredients:
             if self.pricelist.get(ingredient):
