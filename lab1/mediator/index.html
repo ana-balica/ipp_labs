@@ -4,9 +4,25 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Mediator game</title>
+        <style>
+            body {width: 70%; margin: 0 auto; font-family: Arial, sans-serif;}
+            h1, h3, p, div {text-align: center;}
+            .fl_left {float: left;}
+            .clear {clear: both;}
+            .score {width: 50%; font-weight: 500; font-size: 56px; text-align: center; margin: 5% 0;}
+            button {margin: 0 auto; width: 200px; height: 50px;}
+        </style>
     </head>
     <body>
-        
+        <h1>Click Mediator game</h1>
+        <h3>Player1 vs Player2</h3>
+        <h3 id="winner"></h3>
+        <div class="fl_left score" id="Player1">0</div>
+        <div class="fl_left score" id="Player2">0</div>
+        <div class="clear"></div>
+        <div>
+            <button>START</button>
+        </div>
         <script src="js/jquery-2.1.0.min.js"></script>
         <script src="js/game.js"></script>
     </body>
