@@ -69,6 +69,7 @@ class ControlMainWindow(QtGui.QMainWindow):
         for element in self.ui.centralwidget.findChildren(QtGui.QCheckBox):
             element.stateChanged.connect(self.update_pizza_contents)
             element.stateChanged.connect(self.update_price)
+            element.stateChanged.connect(self.toggle_order_button)
 
     def update_pizza_contents(self, state):
         sender = self.sender()
@@ -94,10 +95,15 @@ class ControlMainWindow(QtGui.QMainWindow):
 
     def toggle_order_button(self, text):
         if text:
-            state = True
+            state_input = True
         else:
-            state = False
-        self.ui.order_btn.setEnabled(state)
+            state_input = False
+        state_checkbox = False
+        for element in self.ui.centralwidget.findChildren(QtGui.QCheckBox):
+            if element.isChecked():
+                state_checkbox = True
+                break
+        self.ui.order_btn.setEnabled(state_input and state_checkbox)
 
 
 if __name__ == "__main__":
