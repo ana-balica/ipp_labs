@@ -1,7 +1,7 @@
 import sys
 from csv import reader
 
-from PySide import QtGui
+from PySide import QtGui, QtCore
 from pizza_ui import Ui_MainWindow
 
 
@@ -55,17 +55,44 @@ class PriceCalculator(object):
 
 
 class ControlMainWindow(QtGui.QMainWindow):
-    def __init__(self, parent=None):
+    def __init__(self, ingredients, parent=None):
         super(ControlMainWindow, self).__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.bind_ingredients()
 
+        self.ingredients = ingredients
+        self.selected_ingredients = []
+
+    def bind_ingredients(self):
+        for element in self.ui.centralwidget.findChildren(QtGui.QCheckBox):
+            element.stateChanged.connect(self.update_pizza_contents)
+            element.stateChanged.connect(self.update_price)
+
+    def update_pizza_contents(self, state):
+        sender = self.sender()
+        if state == QtCore.Qt.Checked:
+            self.selected_ingredients.extend([sender.text()])
+        else:
+            self.selected_ingredients.remove(sender.text())
+        self.ui.pizza_contents.setText("Your pizza contains:")
+        for ingredient in self.selected_ingredients:
+            full_text = self.ui.pizza_contents.text()
+            if full_text.endswith(':'):
+                self.ui.pizza_contents.setText(full_text + " " + ingredient + ".")
+            else:
+                self.ui.pizza_contents.setText(full_text[:-1] + ", " + ingredient + ".")
+
+    def update_price(self):
+        price_calc = PriceCalculator(self.ingredients)
+        price = price_calc.compute_price(self.selected_ingredients)
+        self.ui.price_label.setText("Price: {0} lei".format(price))
 
 
 if __name__ == "__main__":
     csv = CSV('pricelist.csv')
     ingredients = csv.load_ingredients()
     app = QtGui.QApplication(sys.argv)
-    pizza_app = ControlMainWindow()
+    pizza_app = ControlMainWindow(ingredients)
     pizza_app.show()
     sys.exit(app.exec_())
