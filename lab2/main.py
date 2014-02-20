@@ -65,7 +65,6 @@ class ControlMainWindow(QtGui.QMainWindow):
         super(ControlMainWindow, self).__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        # self.connect(self.ui.order_btn, QtCore.SIGNAL("clicked()"), self.finish_order)
         self.bind_ingredients()
         self.bind_name_input()
         self.bind_order_btn()
