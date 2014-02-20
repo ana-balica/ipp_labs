@@ -46,6 +46,9 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
     <property name="maxLength">
      <number>32773</number>
     </property>

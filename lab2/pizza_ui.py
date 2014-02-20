@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'pizza.ui'
 #
-# Created: Thu Feb 20 02:59:36 2014
+# Created: Thu Feb 20 03:28:35 2014
 #      by: pyside-uic 0.2.15 running on PySide 1.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,6 +26,7 @@ class Ui_MainWindow(object):
         self.title.setObjectName("title")
         self.name_input = QtGui.QLineEdit(self.centralwidget)
         self.name_input.setGeometry(QtCore.QRect(274, 51, 261, 31))
+        self.name_input.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.name_input.setMaxLength(32773)
         self.name_input.setObjectName("name_input")
         self.ingredients_label = QtGui.QLabel(self.centralwidget)
