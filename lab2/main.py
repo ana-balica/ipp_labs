@@ -60,6 +60,7 @@ class ControlMainWindow(QtGui.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.bind_ingredients()
+        self.bind_name_input()
 
         self.ingredients = ingredients
         self.selected_ingredients = []
@@ -87,6 +88,16 @@ class ControlMainWindow(QtGui.QMainWindow):
         price_calc = PriceCalculator(self.ingredients)
         price = price_calc.compute_price(self.selected_ingredients)
         self.ui.price_label.setText("Price: {0} lei".format(price))
+
+    def bind_name_input(self):
+        self.ui.name_input.textChanged.connect(self.toggle_order_button)
+
+    def toggle_order_button(self, text):
+        if text:
+            state = True
+        else:
+            state = False
+        self.ui.order_btn.setEnabled(state)
 
 
 if __name__ == "__main__":
