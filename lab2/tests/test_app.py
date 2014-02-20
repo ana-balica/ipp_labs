@@ -5,11 +5,16 @@ from lab2.main import CSV, ControlMainWindow, PriceCalculator
 
 
 class TestPizzaApp(object):
+    qapplication = False
+
     def setup_method(self, method):
         csv = CSV('pricelist.csv')
         self.ingredients = csv.load_ingredients()
-        app = QtGui.QApplication(sys.argv)
-        self.app = ControlMainWindow(self.ingredients)
+        if not TestPizzaApp.qapplication:
+            self.app = QtGui.QApplication(sys.argv)
+            TestPizzaApp.qapplication = True
+        self.pizza_app = ControlMainWindow(self.ingredients)
+
 
     def test_toggle_order_button(self):
         self.app.toggle_order_button()
