@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'pizza.ui'
 #
-# Created: Wed Feb 19 22:58:11 2014
+# Created: Thu Feb 20 02:34:25 2014
 #      by: pyside-uic 0.2.15 running on PySide 1.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -41,23 +41,24 @@ class Ui_MainWindow(object):
         self.order_btn.setEnabled(False)
         self.order_btn.setGeometry(QtCore.QRect(674, 546, 101, 31))
         self.order_btn.setObjectName("order_btn")
-        self.label_7 = QtGui.QLabel(self.centralwidget)
-        self.label_7.setGeometry(QtCore.QRect(40, 440, 491, 51))
+        self.pizza_contents = QtGui.QLabel(self.centralwidget)
+        self.pizza_contents.setGeometry(QtCore.QRect(40, 440, 491, 51))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setWeight(75)
         font.setBold(True)
-        self.label_7.setFont(font)
-        self.label_7.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
-        self.label_7.setObjectName("label_7")
-        self.label_8 = QtGui.QLabel(self.centralwidget)
-        self.label_8.setGeometry(QtCore.QRect(40, 520, 141, 31))
+        self.pizza_contents.setFont(font)
+        self.pizza_contents.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.pizza_contents.setWordWrap(True)
+        self.pizza_contents.setObjectName("pizza_contents")
+        self.price_label = QtGui.QLabel(self.centralwidget)
+        self.price_label.setGeometry(QtCore.QRect(40, 520, 141, 31))
         font = QtGui.QFont()
         font.setPointSize(16)
         font.setWeight(75)
         font.setBold(True)
-        self.label_8.setFont(font)
-        self.label_8.setObjectName("label_8")
+        self.price_label.setFont(font)
+        self.price_label.setObjectName("price_label")
         self.widget = QtGui.QWidget(self.centralwidget)
         self.widget.setGeometry(QtCore.QRect(10, 140, 781, 41))
         self.widget.setObjectName("widget")
@@ -177,8 +178,8 @@ class Ui_MainWindow(object):
         self.name_input.setPlaceholderText(QtGui.QApplication.translate("MainWindow", "Please enter your name", None, QtGui.QApplication.UnicodeUTF8))
         self.ingredients_label.setText(QtGui.QApplication.translate("MainWindow", "Choose pizza ingredients", None, QtGui.QApplication.UnicodeUTF8))
         self.order_btn.setText(QtGui.QApplication.translate("MainWindow", "Order", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_7.setText(QtGui.QApplication.translate("MainWindow", "Your pizza contains:", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_8.setText(QtGui.QApplication.translate("MainWindow", "Price: 00 lei", None, QtGui.QApplication.UnicodeUTF8))
+        self.pizza_contents.setText(QtGui.QApplication.translate("MainWindow", "Your pizza contains:", None, QtGui.QApplication.UnicodeUTF8))
+        self.price_label.setText(QtGui.QApplication.translate("MainWindow", "Price: 00 lei", None, QtGui.QApplication.UnicodeUTF8))
         self.cheese_label.setText(QtGui.QApplication.translate("MainWindow", "Cheese", None, QtGui.QApplication.UnicodeUTF8))
         self.meat_label.setText(QtGui.QApplication.translate("MainWindow", "Meat", None, QtGui.QApplication.UnicodeUTF8))
         self.vegetables_label.setText(QtGui.QApplication.translate("MainWindow", "Vegetables", None, QtGui.QApplication.UnicodeUTF8))

@@ -92,7 +92,7 @@
      <string>Order</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_7">
+   <widget class="QLabel" name="pizza_contents">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -114,8 +114,11 @@
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
     </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
    </widget>
-   <widget class="QLabel" name="label_8">
+   <widget class="QLabel" name="price_label">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -403,8 +406,8 @@
    <zorder>ch_chili_pepper</zorder>
    <zorder>ch_parsley</zorder>
    <zorder>order_btn</zorder>
-   <zorder>label_7</zorder>
-   <zorder>label_8</zorder>
+   <zorder>pizza_contents</zorder>
+   <zorder>price_label</zorder>
    <zorder>meat_label</zorder>
   </widget>
  </widget>
