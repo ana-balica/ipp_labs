@@ -33,3 +33,11 @@ class TestPizzaApp(object):
         self.pizza_app.toggle_order_button()
         assert self.pizza_app.ui.order_btn.isEnabled() is True
 
+    def test_update_price(self):
+        assert self.pizza_app.ui.price_label.text() == u"Price: 00 lei"
+        self.pizza_app.ui.ch_bacon.setChecked(True)
+        assert self.pizza_app.ui.price_label.text() == u"Price: 100 lei"
+        self.pizza_app.ui.ch_feta.setChecked(True)
+        assert self.pizza_app.ui.price_label.text() == u"Price: 120 lei"
+        self.pizza_app.ui.ch_bacon.setChecked(False)
+        assert self.pizza_app.ui.price_label.text() == u"Price: 20 lei"
