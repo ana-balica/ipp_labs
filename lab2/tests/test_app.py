@@ -1,5 +1,5 @@
 import sys
-from PySide import QtGui, QtTest
+from PySide import QtGui
 
 from lab2.main import CSV, ControlMainWindow, PriceCalculator
 
