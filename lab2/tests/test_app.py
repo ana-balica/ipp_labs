@@ -37,3 +37,14 @@ class TestPizzaApp(object):
         assert self.pizza_app.ui.price_label.text() == u"Price: 120 lei"
         self.pizza_app.ui.ch_bacon.setChecked(False)
         assert self.pizza_app.ui.price_label.text() == u"Price: 20 lei"
+
+    def test_update_pizza_contents(self):
+        assert self.pizza_app.ui.pizza_contents.text() == u"Your pizza contains:"
+        self.pizza_app.ui.ch_bacon.setChecked(True)
+        assert self.pizza_app.ui.pizza_contents.text() == u"Your pizza contains: Bacon."
+        self.pizza_app.ui.ch_bacon.setChecked(False)
+        assert self.pizza_app.ui.pizza_contents.text() == u"Your pizza contains:"
+
+        self.pizza_app.ui.ch_ham.setChecked(True)
+        self.pizza_app.ui.ch_smoked_mushrooms.setChecked(True)
+        assert self.pizza_app.ui.pizza_contents.text() == u"Your pizza contains: Ham, Smoked mushrooms."
