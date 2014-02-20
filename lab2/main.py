@@ -61,7 +61,14 @@ class PriceCalculator(object):
 
 
 class ControlMainWindow(QtGui.QMainWindow):
+    """ Main control window of the application
+
+    """
     def __init__(self, ingredients, parent=None):
+        """ Initialiser, calls binding to such elements as buttons, checkboxes
+
+        :param ingredients: a dictionary of ingredient names and prices
+        """
         super(ControlMainWindow, self).__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -73,6 +80,10 @@ class ControlMainWindow(QtGui.QMainWindow):
         self.selected_ingredients = []
 
     def bind_ingredients(self):
+        """ Bind all checkboxes that represent ingredients on changed state to
+        several actions
+
+        """
         for element in self.ui.centralwidget.findChildren(QtGui.QCheckBox):
             element.stateChanged.connect(self.update_pizza_contents)
             element.stateChanged.connect(self.update_price)
@@ -80,6 +91,10 @@ class ControlMainWindow(QtGui.QMainWindow):
             element.stateChanged.connect(self.check_ingredients)
 
     def update_pizza_contents(self, state):
+        """ Update the multiline text label with ingredients selected
+
+        :param state: state of the checkbox: checked/unchecked
+        """
         sender = self.sender()
         if state == QtCore.Qt.Checked:
             self.selected_ingredients.extend([sender.text()])
@@ -94,11 +109,17 @@ class ControlMainWindow(QtGui.QMainWindow):
                 self.ui.pizza_contents.setText(full_text[:-1] + ", " + ingredient + ".")
 
     def update_price(self):
+        """ Update the price text label with the total pizza price
+        """
         price_calc = PriceCalculator(self.ingredients)
         price = price_calc.compute_price(self.selected_ingredients)
         self.ui.price_label.setText("Price: {0} lei".format(price))
 
     def check_ingredients(self):
+        """ Control the number of selected ingredients, each group has a max value
+        allowed to be added to pizza. If max number is reached, disable the rest
+        of the checkboxes in the group.
+        """
         cheese_count = 0
         cheese_ingredients = self.ui.widget3.findChildren(QtGui.QCheckBox)
         for cheese in cheese_ingredients:
@@ -139,9 +160,14 @@ class ControlMainWindow(QtGui.QMainWindow):
                     vegetable.setEnabled(True)
 
     def bind_name_input(self):
+        """ Bind name input to control the enabling of order button
+        """
         self.ui.name_input.textChanged.connect(self.toggle_order_button)
 
     def toggle_order_button(self):
+        """ Enable/disable order button if name input contains any text and if
+        at least one ingredient is selected
+        """
         text = self.ui.name_input.text()
         if text:
             state_input = True
@@ -155,13 +181,17 @@ class ControlMainWindow(QtGui.QMainWindow):
         self.ui.order_btn.setEnabled(state_input and state_checkbox)
 
     def bind_order_btn(self):
+        """ Bind order button to finish order action
+        """
         self.ui.order_btn.clicked.connect(self.finish_order)
 
     def finish_order(self):
+        """ Finish the order by displaying a message box with order id
+        """
         name = self.ui.name_input.text()
         short_id = random.randint(1, 999)
         msg = QtGui.QMessageBox()
-        msg.setText("Thank you {0}!\nYour order id is {1}.".format(name, short_id))
+        msg.setText("Thank you {0}!\nYour order ID is {1}.".format(name, short_id))
         msg.exec_()
 
 
