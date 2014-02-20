@@ -17,18 +17,19 @@ class TestPizzaApp(object):
 
 
     def test_toggle_order_button(self):
-        self.app.toggle_order_button()
-        assert self.app.ui.order_btn.isEnabled() is False
+        self.pizza_app.toggle_order_button()
+        assert self.pizza_app.ui.order_btn.isEnabled() is False
 
-        self.app.ui.order_btn.setText("some text")
-        self.app.toggle_order_button()
-        assert self.app.ui.order_btn.isEnabled() is False
+        self.pizza_app.ui.order_btn.setText("some text")
+        self.pizza_app.toggle_order_button()
+        assert self.pizza_app.ui.order_btn.isEnabled() is False
 
-        self.app.ui.name_input.setText("")
-        self.app.ui.ch_bacon.setChecked(True)
-        self.app.toggle_order_button()
-        assert self.app.ui.order_btn.isEnabled() is False
+        self.pizza_app.ui.name_input.setText("")
+        self.pizza_app.ui.ch_bacon.setChecked(True)
+        self.pizza_app.toggle_order_button()
+        assert self.pizza_app.ui.order_btn.isEnabled() is False
 
-        self.app.ui.name_input.setText("some text")
-        self.app.toggle_order_button()
-        assert self.app.ui.order_btn.isEnabled() is True
+        self.pizza_app.ui.name_input.setText("some text")
+        self.pizza_app.toggle_order_button()
+        assert self.pizza_app.ui.order_btn.isEnabled() is True
+
