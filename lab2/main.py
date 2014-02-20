@@ -5,6 +5,11 @@ from PySide import QtGui, QtCore
 from pizza_ui import Ui_MainWindow
 
 
+MAX_CHEESE_ING = 3
+MAX_MEAT_ING = 2
+MAX_VEGETABLES_ING = 5
+
+
 class CSV(object):
     """ CSV class for loading ingredients data.
 
@@ -70,6 +75,7 @@ class ControlMainWindow(QtGui.QMainWindow):
             element.stateChanged.connect(self.update_pizza_contents)
             element.stateChanged.connect(self.update_price)
             element.stateChanged.connect(self.toggle_order_button)
+            element.stateChanged.connect(self.check_ingredients)
 
     def update_pizza_contents(self, state):
         sender = self.sender()
@@ -89,6 +95,46 @@ class ControlMainWindow(QtGui.QMainWindow):
         price_calc = PriceCalculator(self.ingredients)
         price = price_calc.compute_price(self.selected_ingredients)
         self.ui.price_label.setText("Price: {0} lei".format(price))
+
+    def check_ingredients(self):
+        cheese_count = 0
+        cheese_ingredients = self.ui.widget3.findChildren(QtGui.QCheckBox)
+        for cheese in cheese_ingredients:
+            if cheese.isChecked():
+                cheese_count += 1
+            if cheese_count >= MAX_CHEESE_ING:
+                for cheese in cheese_ingredients:
+                    if not cheese.isChecked():
+                        cheese.setEnabled(False)
+            else:
+                for cheese in cheese_ingredients:
+                    cheese.setEnabled(True)
+
+        meat_count = 0
+        meat_ingredients = self.ui.widget1.findChildren(QtGui.QCheckBox)
+        for meat in meat_ingredients:
+            if meat.isChecked():
+                meat_count += 1
+            if meat_count >= MAX_MEAT_ING:
+                for meat in meat_ingredients:
+                    if not meat.isChecked():
+                        meat.setEnabled(False)
+            else:
+                for meat in meat_ingredients:
+                    meat.setEnabled(True)
+
+        vegetables_count = 0
+        vegetables_ingredients = self.ui.widget2.findChildren(QtGui.QCheckBox)
+        for vegetable in vegetables_ingredients:
+            if vegetable.isChecked():
+                vegetables_count += 1
+            if vegetables_count >= MAX_VEGETABLES_ING:
+                for vegetable in vegetables_ingredients:
+                    if not vegetable.isChecked():
+                        vegetable.setEnabled(False)
+            else:
+                for vegetable in vegetables_ingredients:
+                    vegetable.setEnabled(True)
 
     def bind_name_input(self):
         self.ui.name_input.textChanged.connect(self.toggle_order_button)
