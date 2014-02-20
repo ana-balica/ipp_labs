@@ -139,7 +139,8 @@ class ControlMainWindow(QtGui.QMainWindow):
     def bind_name_input(self):
         self.ui.name_input.textChanged.connect(self.toggle_order_button)
 
-    def toggle_order_button(self, text):
+    def toggle_order_button(self):
+        text = self.ui.name_input.text()
         if text:
             state_input = True
         else:
