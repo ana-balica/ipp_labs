@@ -1,4 +1,5 @@
 import sys
+import random
 from csv import reader
 
 from PySide import QtGui, QtCore
@@ -64,8 +65,10 @@ class ControlMainWindow(QtGui.QMainWindow):
         super(ControlMainWindow, self).__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        # self.connect(self.ui.order_btn, QtCore.SIGNAL("clicked()"), self.finish_order)
         self.bind_ingredients()
         self.bind_name_input()
+        self.bind_order_btn()
 
         self.ingredients = ingredients
         self.selected_ingredients = []
@@ -151,6 +154,16 @@ class ControlMainWindow(QtGui.QMainWindow):
                 state_checkbox = True
                 break
         self.ui.order_btn.setEnabled(state_input and state_checkbox)
+
+    def bind_order_btn(self):
+        self.ui.order_btn.clicked.connect(self.finish_order)
+
+    def finish_order(self):
+        name = self.ui.name_input.text()
+        short_id = random.randint(1, 999)
+        msg = QtGui.QMessageBox()
+        msg.setText("Thank you {0}!\nYour order id is {1}.".format(name, short_id))
+        msg.exec_()
 
 
 if __name__ == "__main__":
