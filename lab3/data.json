@@ -1,0 +1,17 @@
+{
+    "1": {
+        "credits": 5,
+        "title": "IPP",
+        "workload": 120
+    },
+    "2": {
+        "credits": 6,
+        "title": "No title haha",
+        "workload": 150
+    },
+    "3": {
+        "credits": 4,
+        "title": "PSI",
+        "workload": 80
+    }
+}
