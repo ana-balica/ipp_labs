@@ -58,7 +58,7 @@ class CoursesModel(object):
 
 
 if __name__ == '__main__':
-    courses_model = CoursesModel("data.json")
+    courses_model = CoursesModel("data/courses.json")
     courses_model.update_title("2", u"No title haha")    
     courses_model.insert_course({"title": "PSI", "credits": 4, "workload": 80})
     print courses_model.data

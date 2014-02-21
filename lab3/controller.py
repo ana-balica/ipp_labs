@@ -5,7 +5,7 @@ from view import render_template
 def show_courses_info():
     """ Show all the information about courses
     """
-    courses_model = CoursesModel("data.json")
+    courses_model = CoursesModel("data/courses.json")
     data = transform_data(**courses_model.data)
     render_template("template.txt", **{'courses': data})
 
