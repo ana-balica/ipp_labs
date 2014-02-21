@@ -7,7 +7,7 @@ def show_courses_info():
     """
     courses_model = CoursesModel("data/courses.json")
     data = transform_data(**courses_model.data)
-    render_template("template.txt", **{'courses': data})
+    render_template("templates/courses.txt", **{'courses': data})
 
 
 def transform_data(**data):
